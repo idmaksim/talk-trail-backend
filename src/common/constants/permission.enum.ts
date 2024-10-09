@@ -22,16 +22,4 @@ export enum PermissionEnum {
   RolePermissionGetAll = 'role-permission-get-all',
   RolePermissionUpdate = 'role-permission-update',
   RolePermissionDelete = 'role-permission-delete',
-
-  PersonCreate = 'person-create',
-  PersonGet = 'person-get',
-  PersonGetAll = 'person-get-all',
-  PersonUpdate = 'person-update',
-  PersonDelete = 'person-delete',
-
-  TradingSystemSettingCreate = 'trading-system-setting-create',
-  TradingSystemSettingGet = 'trading-system-setting-get',
-  TradingSystemSettingGetAll = 'trading-system-setting-get-all',
-  TradingSystemSettingUpdate = 'trading-system-setting-update',
-  TradingSystemSettingDelete = 'trading-system-setting-delete',
 }

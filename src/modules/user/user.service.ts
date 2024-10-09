@@ -25,7 +25,7 @@ export class UserService {
     private readonly cacheService: CacheService,
   ) {}
 
-  async create({ person, ...userDto }: SignUpUserDto) {
+  async create(userDto: SignUpUserDto) {
     const [
       userRoleUuid,
       hashedPassword,
@@ -54,9 +54,6 @@ export class UserService {
       return await this.userRepository.create(
         {
           ...userDto,
-          person: {
-            create: person,
-          },
         },
         hashedPassword,
         userRoleUuid,
@@ -68,16 +65,12 @@ export class UserService {
         const userRole = await this.roleService.findOneByName('user');
         this.logger.log('Сохраняем uuid роли пользователя в кэше');
         await this.cacheService.set('user_role_uuid', userRole.uuid);
-        return await this.userRepository.create(
-          {
+        return await this.userRepository.create({
             ...userDto,
-            person: {
-              create: person,
-            },
           },
-          hashedPassword,
-          userRole.uuid,
-        );
+        hashedPassword,
+        userRole.uuid,
+      );
       }
     }
   }

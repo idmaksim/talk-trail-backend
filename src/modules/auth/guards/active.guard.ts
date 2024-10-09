@@ -18,17 +18,11 @@ export class ActiveGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const { user } = context.switchToHttp().getRequest();
     const canActivate = await this.userService.findOneByUuid(user.uuid);
-    if (canActivate.isActive && !canActivate.isForbidden) {
+    if (canActivate.isActive) {
       return true;
     } else if (!canActivate.isActive) {
       throw new ForbiddenException(
         this.i18n.t('errors.user.deactivated', {
-          lang: I18nContext.current().lang,
-        }),
-      );
-    } else if (canActivate.isForbidden) {
-      throw new UnauthorizedException(
-        this.i18n.t('errors.user.forbidden', {
           lang: I18nContext.current().lang,
         }),
       );
