@@ -6,4 +6,6 @@ export default () => ({
   REDIS_URL: process.env.REDIS_URL,
   REDIS_TTL: parseInt(process.env.REDIS_TTL, 10),
   REDIS_MAX: parseInt(process.env.REDIS_MAX, 10),
+  REDIS_USERNAME: process.env.REDIS_USERNAME,
+  REDIS_PASSWORD: process.env.REDIS_PASSWORD,
 });

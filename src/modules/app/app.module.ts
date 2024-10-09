@@ -28,6 +28,8 @@ import { TokenModule } from '../token/token.module';
           port: 6379,
           ttl: configService.get('REDIS_TTL'),
           max: configService.get('REDIS_MAX'),
+          username: configService.get('REDIS_USERNAME'),
+          password: configService.get('REDIS_PASSWORD'),
         };
       },
     }),
