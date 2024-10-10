@@ -65,12 +65,13 @@ export class UserService {
         const userRole = await this.roleService.findOneByName('user');
         this.logger.log('Сохраняем uuid роли пользователя в кэше');
         await this.cacheService.set('user_role_uuid', userRole.uuid);
-        return await this.userRepository.create({
+        return await this.userRepository.create(
+          {
             ...userDto,
           },
-        hashedPassword,
-        userRole.uuid,
-      );
+          hashedPassword,
+          userRole.uuid,
+        );
       }
     }
   }

@@ -8,13 +8,15 @@ datasource db {
 }
 
 model User {
-  uuid     String  @id @default(uuid())
-  email    String  @unique
-  username String  @unique
-  password String
-  roleUuid String
-  isActive Boolean @default(true)
-  role     Role    @relation(fields: [roleUuid], references: [uuid], onDelete: Cascade)
+  uuid      String   @id @default(uuid())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  roleUuid  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  lastSeen  DateTime @default(now())
+  role      Role     @relation(fields: [roleUuid], references: [uuid], onDelete: Cascade)
 }
 
 model Role {

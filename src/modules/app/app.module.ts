@@ -30,6 +30,7 @@ import { TokenModule } from '../token/token.module';
           max: configService.get('REDIS_MAX'),
           username: configService.get('REDIS_USERNAME'),
           password: configService.get('REDIS_PASSWORD'),
+          db: 0,
         };
       },
     }),
